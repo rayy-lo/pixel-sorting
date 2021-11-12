@@ -1,10 +1,12 @@
 import Sidebar from "./Sidebar";
-import "../styles/App.css";
+import styles from "../styles/App.module.css";
 import { CanvasContainer } from "./CanvasContainer";
+
+const { app } = styles;
 
 function App() {
   return (
-    <div className="App">
+    <div className={styles.app}>
       <Sidebar />
       <CanvasContainer />
     </div>
