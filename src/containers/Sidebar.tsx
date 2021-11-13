@@ -1,5 +1,5 @@
 import { Dropdown } from "../components/Dropdown";
-import styles from "../styles/Sidebar.module.css";
+import styles from "../styles/modules/Sidebar.module.css";
 
 const options: string[] = ["32x32", "64x64", "128x128"];
 
