@@ -1,27 +1,48 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, MutableRefObject } from "react";
 import styles from "../styles/modules/Canvas.module.css";
 
-type CanvasProp = {
+interface CanvasProp {
+  /**
+   * Width of canvas
+   * @defaultValue 800
+   */
   width?: number;
+  /**
+   * Height of canvas
+   * @defaultValue 800
+   */
   height?: number;
-  src: string;
+  /**
+   * Image element to render on canvas
+   */
+  image: HTMLImageElement;
+}
+
+/**
+ * Shuffles pixels of canvas
+ *
+ * @param data - Canvas data: Uint8ClampedArray
+ *
+ * @returns Uint8ClampedArray
+ */
+
+const shuffleImageData = (data: Uint8ClampedArray) => {
+  console.log(data);
 };
 
-export const Canvas = ({ width = 800, height = 800, src }: CanvasProp) => {
-  const canvasRef = useRef<HTMLCanvasElement>(null);
+export const Canvas = ({ width = 800, height = 800, image }: CanvasProp) => {
+  const canvasRef = useRef() as MutableRefObject<HTMLCanvasElement>;
 
   useEffect(() => {
-    if (canvasRef.current !== null) {
-      const canvas = canvasRef.current;
-      const context = canvas.getContext("2d");
-      const image = new Image();
-      image.src = src;
+    const context = canvasRef.current.getContext("2d");
+    context?.drawImage(image, 0, 0, width, height);
+    const imageData = context?.getImageData(0, 0, 50, 50);
 
-      if (context !== null) {
-        context.drawImage(image, 0, 0, width, height);
-      }
+    if (imageData !== undefined) {
+      shuffleImageData(imageData.data);
     }
-  }, []);
+    console.log(imageData);
+  });
 
   return (
     <canvas
