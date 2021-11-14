@@ -1,13 +1,30 @@
 import { Canvas } from "../components/Canvas";
-import image from "../assets/kitten.png";
+import kittenImg from "../assets/kitten.png";
 import styles from "../styles/modules/CanvasContainer.module.css";
 
-const { container } = styles;
+/**
+ * Generate an image element for Canvas component to render
+ *
+ * @param src - String source of image
+ *
+ * @returns HTMLImageElement
+ */
+
+const createImageElementForCanvas = (src: string) => {
+  const image = new Image();
+  image.src = src;
+
+  return image;
+};
 
 export const CanvasContainer = () => {
+  const { container } = styles;
+
+  const canvasImage = createImageElementForCanvas(kittenImg);
+
   return (
     <div className={container}>
-      <Canvas src={image} />
+      <Canvas image={canvasImage} />
     </div>
   );
 };
