@@ -1,12 +1,12 @@
 import Sidebar from "./Sidebar";
 import "../styles/App.css";
-import { CanvasContainer } from "./CanvasContainer";
+import { Canvas } from "./Canvas";
 
 function App() {
   return (
     <div className="App">
       <Sidebar />
-      <CanvasContainer />
+      <Canvas />
     </div>
   );
 }
