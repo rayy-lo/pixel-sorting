@@ -1,6 +1,6 @@
 import Sidebar from "./Sidebar";
 import "../styles/App.css";
-import { Canvas } from "./Canvas";
+import { Canvas } from "./Canvas/Canvas";
 
 function App() {
   return (
