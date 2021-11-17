@@ -1,11 +1,11 @@
 import { useRef, useState, useEffect } from "react";
-import kittenImg from "../assets/kitten.png";
-import styles from "../styles/modules/Canvas.module.css";
+import kittenImg from "../../assets/kitten.png";
+import styles from "../../styles/modules/Canvas.module.css";
 import {
   getInitialImageData,
   createImageElementForCanvas,
   shuffleArray,
-} from "./Canvas";
+} from "./index";
 
 export interface CanvasProp {
   /**
