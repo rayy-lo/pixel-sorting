@@ -1,5 +1,5 @@
 import { useRef, useState, useEffect } from "react";
-import kittenImg from "../../assets/kitten.png";
+import kittenImg from "../../assets/kitten.jpg";
 import styles from "../../styles/modules/Canvas.module.css";
 import { getImageData, createImageElement, shuffleArray } from "./index";
 
@@ -16,7 +16,7 @@ export interface CanvasProp {
   height?: number;
 }
 
-const image = createImageElement(kittenImg);
+const image = createImageElement(kittenImg, () => console.log("log"));
 const imageData = getImageData(image);
 
 export const Canvas = ({ width = 800, height = 800 }: CanvasProp) => {
