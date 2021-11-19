@@ -17,13 +17,18 @@ export const getImageData = (
 ): Uint8ClampedArray => {
   const inMemoryCanvas = document.createElement("canvas");
   const ctx = inMemoryCanvas.getContext("2d");
-  ctx?.drawImage(image, 0, 0);
+  // const bitmap = createImageBitmap(image);
 
-  const imageData = ctx?.getImageData(0, 0, tileWidth, tileHeight);
+  console.log("in image data");
+
+  // bitmap.then((bitmap) => {
+  //   ctx?.drawImage(bitmap, 0, 0);
+  //   const imageData = ctx?.getImageData(0, 0, tileWidth, tileHeight);
+  //   console.log(imageData);
+  // });
 
   // return imageData;
 
-  console.log(imageData.data);
   return new Uint8ClampedArray([]);
 };
 
@@ -36,11 +41,14 @@ export const getImageData = (
  * @returns HTMLImageElement
  */
 
-export const createImageElement = (src: string): HTMLImageElement => {
+export const createImageElement = (
+  src: string,
+  callback: () => void
+): HTMLImageElement => {
   const image = new Image();
-  image.onload = () => {
-    image.src = src;
-  };
+
+  image.onload = callback;
+  image.src = src;
 
   return image;
 };
