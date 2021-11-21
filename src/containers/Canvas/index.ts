@@ -14,22 +14,14 @@ export const getImageData = (
   image: HTMLImageElement,
   tileWidth: number = 32,
   tileHeight: number = 32
-): Uint8ClampedArray => {
+) => {
   const inMemoryCanvas = document.createElement("canvas");
   const ctx = inMemoryCanvas.getContext("2d");
-  // const bitmap = createImageBitmap(image);
 
-  console.log("in image data");
+  ctx?.drawImage(image, 0, 0);
+  const imageData = ctx?.getImageData(0, 0, tileWidth, tileHeight);
 
-  // bitmap.then((bitmap) => {
-  //   ctx?.drawImage(bitmap, 0, 0);
-  //   const imageData = ctx?.getImageData(0, 0, tileWidth, tileHeight);
-  //   console.log(imageData);
-  // });
-
-  // return imageData;
-
-  return new Uint8ClampedArray([]);
+  return imageData;
 };
 
 /**
