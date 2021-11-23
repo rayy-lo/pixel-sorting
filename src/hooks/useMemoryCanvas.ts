@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect } from "react";
 
 export const useMemoryCanvas = (src: string) => {
   const [imageData, setImageData] = useState<ImageData>();
