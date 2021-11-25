@@ -1,5 +1,4 @@
-import { useEffect, useRef } from "react";
-import { getShuffledImageData } from ".";
+import { useCanvas } from "../../hooks/useCanvas";
 import styles from "../../styles/modules/Canvas.module.css";
 
 interface CanvasProp {
@@ -25,15 +24,7 @@ export const Canvas = ({
   height = 800,
 }: CanvasProp) => {
   const { container, canvas } = styles;
-  const canvasRef = useRef<HTMLCanvasElement | null>(null);
-  const shuffledData = getShuffledImageData(imageData.data);
-
-  useEffect(() => {
-    const ctx = canvasRef.current?.getContext("2d");
-    if (shuffledData) {
-      ctx?.putImageData(shuffledData, 0, 0);
-    }
-  }, []);
+  const canvasRef = useCanvas(imageData);
 
   return (
     <div className={container}>
