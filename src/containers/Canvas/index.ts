@@ -1,3 +1,7 @@
+interface IndexedData {
+  [key: number]: number;
+}
+
 /**
  * Shuffles image data - Uint8ClampedArray
  *
@@ -23,17 +27,24 @@ export const getShuffledImageData = (data: Uint8ClampedArray) => {
  * Associate pixel data with index
  * @param {Uint8ClampedArray} data
  *
- * @returns {Object[]}
+ * @returns {Object}
  */
 
-export const associateDataWithIndex = (
-  dataArr: Uint8ClampedArray | undefined
-) => {
-  const dataWithIndex: Object[] = [];
+export const associateDataWithIndex = (dataArr: Uint8ClampedArray) => {
+  const dataWithIndex: IndexedData = {};
 
   dataArr?.forEach((data, index) => {
-    dataWithIndex.push({ index, rgba: data });
+    dataWithIndex[index] = data;
   });
 
   return dataWithIndex;
+};
+
+export const shuffleIndexedData = (indexedData: IndexedData) => {
+  console.log(indexedData);
+  /**
+   * TODO: Shuffle key of indexed data
+   * return a new instance of shuffledIndexedData
+   *
+   */
 };
