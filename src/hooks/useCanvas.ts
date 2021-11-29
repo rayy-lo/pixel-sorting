@@ -13,15 +13,17 @@ export const useCanvas = (imageData: ImageData) => {
     new Uint8ClampedArray(Object.values(indexedData))
   );
 
+  console.log({ shuffledData });
+
   useEffect(() => {
     const ctx = canvasRef.current?.getContext("2d");
     if (shuffledData) {
-      ctx?.putImageData(shuffledData.imageData, 0, 0);
+      ctx?.putImageData(imageData, 0, 0);
     }
 
-    intervalRef.current = window.setInterval(() => {
-      quadraticSort(shuffledData.randomizedOrder);
-    }, 10000);
+    // intervalRef.current = window.setInterval(() => {
+    quadraticSort([3, 1, 2, 5, 6]);
+    // }, 10000);
   }, []);
 
   return canvasRef;

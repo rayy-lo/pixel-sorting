@@ -25,7 +25,7 @@ export const getShuffledImageData = (data: Uint8ClampedArray) => {
   }
 
   return {
-    imageData: new ImageData(uint8arr, 1080, 1080),
+    imageData: new ImageData(uint8arr, 500, 500),
     randomizedOrder,
   };
 };
