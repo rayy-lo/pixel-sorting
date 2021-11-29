@@ -15,16 +15,12 @@ interface CanvasProp {
   /**
    * Sorted image data of image
    */
-  imageData: ImageData;
+  imageSrc: string;
 }
 
-export const Canvas = ({
-  imageData,
-  width = 800,
-  height = 800,
-}: CanvasProp) => {
+export const Canvas = ({ imageSrc, width = 800, height = 800 }: CanvasProp) => {
   const { container, canvas } = styles;
-  const canvasRef = useCanvas(imageData);
+  const canvasRef = useCanvas(imageSrc);
 
   return (
     <div className={container}>

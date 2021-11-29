@@ -1,29 +1,54 @@
 import { useRef, useEffect } from "react";
-import {
-  associateDataWithIndex,
-  getShuffledImageData,
-} from "../containers/Canvas";
 import { quadraticSort } from "../containers/Canvas/sorting";
 
-export const useCanvas = (imageData: ImageData) => {
+export const useCanvas = (imageSrc: string) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const intervalRef = useRef(0);
-  const indexedData = associateDataWithIndex(imageData.data);
-  const shuffledData = getShuffledImageData(
-    new Uint8ClampedArray(Object.values(indexedData))
-  );
-
-  console.log({ shuffledData });
 
   useEffect(() => {
     const ctx = canvasRef.current?.getContext("2d");
-    if (shuffledData) {
-      ctx?.putImageData(imageData, 0, 0);
-    }
+    const handleImageLoad = () => {
+      var cw = canvasRef.current?.width;
+      var ch = canvasRef.current?.height;
+      var rows = 3;
+      var cols = 3;
+      var count = 0;
+      var pieceWidth = cw! / cols;
+      var pieceHeight = ch! / rows;
 
-    // intervalRef.current = window.setInterval(() => {
-    quadraticSort([3, 1, 2, 5, 6]);
-    // }, 10000);
+      var pieces = [
+        { col: 2, row: 2 },
+        { col: 1, row: 2 },
+        { col: 0, row: 2 },
+        { col: 1, row: 1 },
+        { col: 0, row: 1 },
+        { col: 2, row: 1 },
+        { col: 2, row: 0 },
+        { col: 1, row: 0 },
+        { col: 0, row: 0 },
+      ];
+
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          var piece = pieces[count++];
+
+          ctx?.drawImage(
+            img,
+            j * pieceWidth,
+            i * pieceHeight,
+            pieceWidth,
+            pieceHeight,
+            piece.col * pieceWidth,
+            piece.row * pieceHeight,
+            pieceWidth,
+            pieceHeight
+          );
+        }
+      }
+    };
+
+    var img = new Image();
+    img.onload = handleImageLoad;
+    img.src = imageSrc;
   }, []);
 
   return canvasRef;
