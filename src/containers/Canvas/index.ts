@@ -1,9 +1,10 @@
+import { Piece } from "../../types";
+
 /**
- * Shuffle algo
+ * Shuffle array in place
  *
- * @param
+ * @param arr
  *
- * @returns {Object}
  */
 
 export const shuffle = (arr: []) => {
@@ -14,4 +15,30 @@ export const shuffle = (arr: []) => {
     arr[i] = arr[j];
     arr[j] = temp;
   }
+};
+
+/**
+ * Create array of objects to represent each puzzle piece
+ * @param gridSize
+ *
+ * @returns {Piece}
+ */
+
+export const generatePieces = (gridSize: number): Piece[] => {
+  const pieces = [];
+  const rows = gridSize;
+  const cols = gridSize;
+  let piece = 0;
+
+  for (let i = 0; i < rows; i++) {
+    for (let j = 0; j < cols; j++) {
+      pieces.push({
+        row: i,
+        col: j,
+        pieceNum: piece++,
+      });
+    }
+  }
+
+  return pieces;
 };
