@@ -3,17 +3,17 @@ import { Piece } from "../../types";
 /**
  * Shuffle array in place
  *
- * @param arr
+ * @param {Piece[]} pieces -
  *
  */
 
-export const shuffle = (arr: []) => {
-  for (let i = arr.length - 1; i > 0; i--) {
+export const shuffle = (pieces: Piece[]): void => {
+  for (let i = pieces.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
-    const temp = arr[i];
+    const temp = pieces[i];
 
-    arr[i] = arr[j];
-    arr[j] = temp;
+    pieces[i] = pieces[j];
+    pieces[j] = temp;
   }
 };
 
@@ -21,7 +21,7 @@ export const shuffle = (arr: []) => {
  * Create array of objects to represent each puzzle piece
  * @param gridSize
  *
- * @returns {Piece}
+ * @returns {Piece[]}
  */
 
 export const generatePieces = (gridSize: number): Piece[] => {
