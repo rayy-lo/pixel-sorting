@@ -7,8 +7,10 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
   const pieces = generatePieces(gridSize);
   shuffle(pieces);
 
+  /**
+   * Render shuffled image pieces onto canvas
+   */
   useEffect(() => {
-    console.log("effect hook 1");
     const ctx = canvasRef.current?.getContext("2d");
     const handleImageLoad = () => {
       const cw = canvasRef.current?.width;
@@ -41,7 +43,7 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
     const img = new Image();
     img.onload = handleImageLoad;
     img.src = imageSrc;
-  }, []);
+  }, [imageSrc, gridSize, pieces]);
 
   useEffect(() => {
     console.log("effect hook 2");
