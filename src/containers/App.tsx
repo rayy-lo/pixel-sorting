@@ -5,10 +5,15 @@ import kittenImg from "../assets/kitten.jpg";
 import { useState } from "react";
 
 function App() {
-  const [gridSize, setGridSize] = useState(5);
+  const [gridSize, setGridSize] = useState(32);
+
   return (
     <div className="App">
-      <Sidebar />
+      <Sidebar
+        handleChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
+          setGridSize(parseInt(event.target.value));
+        }}
+      />
       <Canvas gridSize={gridSize} imageSrc={kittenImg} />
     </div>
   );

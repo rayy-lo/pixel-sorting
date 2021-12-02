@@ -1,10 +1,10 @@
 import React from "react";
 
-type DropdownProp = {
+interface DropdownProp {
   options: string[];
   label: string;
   handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
-};
+}
 
 export const Dropdown = ({ options, label, handleChange }: DropdownProp) => {
   return (

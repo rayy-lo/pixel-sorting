@@ -1,14 +1,18 @@
 import { Dropdown } from "../components/Dropdown";
 import styles from "../styles/modules/Sidebar.module.css";
 
-const options: string[] = ["32x32", "64x64", "128x128"];
+interface SidebarProp {
+  handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;
+}
 
-function Sidebar() {
+const options: string[] = ["32", "64", "128"];
+
+function Sidebar({ handleChange }: SidebarProp) {
   return (
     <div className={styles.sidebar}>
       <Dropdown
-        handleChange={(event) => console.log(event.target.value)}
-        label="Select Pixel Size:"
+        handleChange={handleChange}
+        label="Grid Size: "
         options={options}
       />
     </div>
