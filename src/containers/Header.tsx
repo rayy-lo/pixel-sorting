@@ -1,5 +1,5 @@
 import { Dropdown } from "../components/Dropdown";
-import styles from "../styles/modules/Sidebar.module.css";
+import styles from "../styles/modules/Header.module.css";
 
 interface SidebarProp {
   handleChange: (event: React.ChangeEvent<HTMLSelectElement>) => void;

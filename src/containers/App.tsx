@@ -1,4 +1,4 @@
-import Sidebar from "./Sidebar";
+import Header from "./Header";
 import "../styles/App.css";
 import { Canvas } from "./Canvas/Canvas";
 import kittenImg from "../assets/kitten.jpg";
@@ -9,7 +9,7 @@ function App() {
 
   return (
     <div className="App">
-      <Sidebar
+      <Header
         handleChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
           setGridSize(parseInt(event.target.value));
         }}
