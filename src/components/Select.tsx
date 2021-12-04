@@ -1,14 +1,25 @@
 import "../styles/modules/Select.module.css";
 
 interface SelectProp {
-  options: string[];
+  /**
+   * options to render for select
+   */
+  options: string[] | number[];
   handleChange: React.ChangeEventHandler;
+  htmlFor: string;
+  labelText: string;
 }
 
-export const Select = ({ options, handleChange }: SelectProp) => {
+export const Select = ({
+  labelText,
+  options,
+  handleChange,
+  htmlFor,
+}: SelectProp) => {
   return (
     <>
-      <select onChange={handleChange}>
+      <label htmlFor={htmlFor}>{labelText}</label>
+      <select name={htmlFor} id={htmlFor} onChange={handleChange}>
         {options.map((option, index) => {
           return (
             <option value={option} key={index}>
