@@ -13,7 +13,18 @@ interface CanvasProp {
    */
   height?: number;
   imageSrc: string;
+  /**
+   * Number to divide image into gridSize x gridSize on canvas
+   */
   gridSize: number;
+  /**
+   * Time complexity for sorting algo
+   */
+  timeComplexity: string;
+  /**
+   * If canvas is in process of sorting
+   */
+  isSorting: boolean;
 }
 
 export const Canvas = ({
