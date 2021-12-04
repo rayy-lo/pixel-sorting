@@ -7,13 +7,13 @@ import { useState } from "react";
 function App() {
   const [gridSize, setGridSize] = useState(32);
 
+  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    setGridSize(parseInt(event.target.value));
+  };
+
   return (
     <div className="App">
-      <Header
-        handleChange={(event: React.ChangeEvent<HTMLSelectElement>) => {
-          setGridSize(parseInt(event.target.value));
-        }}
-      />
+      <Header handleChange={handleChange} />
       <Canvas gridSize={gridSize} imageSrc={kittenImg} />
     </div>
   );
