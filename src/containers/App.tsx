@@ -6,6 +6,8 @@ import { useState } from "react";
 
 function App() {
   const [gridSize, setGridSize] = useState(32);
+  const [timeComplexity, setTimeComplexity] = useState("");
+  const [isSorting, setIsSorting] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setGridSize(parseInt(event.target.value));
@@ -13,8 +15,13 @@ function App() {
 
   return (
     <div className="App">
-      <Header handleChange={handleChange} />
-      <Canvas gridSize={gridSize} imageSrc={kittenImg} />
+      <Header handleChange={handleChange} isSorting={isSorting} />
+      <Canvas
+        isSorting={isSorting}
+        timeComplexity={timeComplexity}
+        gridSize={gridSize}
+        imageSrc={kittenImg}
+      />
     </div>
   );
 }
