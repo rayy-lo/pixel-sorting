@@ -1,5 +1,5 @@
 import { useRef, useEffect } from "react";
-import { generatePieces, shuffle } from "../containers/Canvas";
+import { generatePieces, shuffle } from "../containers/Canvas/helpers";
 import { quadraticSort } from "../containers/Canvas/sorting";
 
 export const useCanvas = (imageSrc: string, gridSize: number) => {
