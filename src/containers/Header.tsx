@@ -6,16 +6,23 @@ interface HeaderProp {
   isSorting: boolean;
 }
 
-const gridSizeOptions: string[] = ["32", "64", "128"];
+const gridSizeOptions = ["32", "64", "128"];
+const timeComplexityOptions = ["quadratic", "linear"];
 
 function Sidebar({ handleChange, isSorting }: HeaderProp) {
   return (
     <div className={styles.sidebar}>
       <Select
-        labelText="Select Grid Size: "
+        labelText="Grid Size: "
         htmlFor="grid-size"
         handleChange={handleChange}
         options={gridSizeOptions}
+      />
+      <Select
+        labelText="Time Complexity: "
+        htmlFor="time-complexity"
+        handleChange={handleChange}
+        options={timeComplexityOptions}
       />
       <Button>{isSorting ? "Pause" : "Start"}</Button>
     </div>
