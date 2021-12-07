@@ -5,21 +5,33 @@ import kittenImg from "../assets/kitten.jpg";
 import { useState } from "react";
 
 function App() {
-  const [gridSize, setGridSize] = useState(32);
-  const [timeComplexity, setTimeComplexity] = useState("");
+  const [canvasConfig, setCanvasConfig] = useState({
+    numOfSquaresPerSide: "32",
+    timeComplexity: "quadratic",
+  });
   const [isSorting, setIsSorting] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
-    setGridSize(parseInt(event.target.value));
+    setCanvasConfig({
+      ...canvasConfig,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const sortImage = () => {
+    console.log("sort image");
   };
 
   return (
     <div className="App">
-      <Header handleChange={handleChange} isSorting={isSorting} />
-      <Canvas
+      <Header
+        handleChange={handleChange}
+        sortImage={sortImage}
         isSorting={isSorting}
-        timeComplexity={timeComplexity}
-        gridSize={gridSize}
+      />
+      <Canvas
+        canvasConfig={canvasConfig}
+        isSorting={isSorting}
         imageSrc={kittenImg}
       />
     </div>
