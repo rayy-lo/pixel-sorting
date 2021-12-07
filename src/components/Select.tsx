@@ -1,4 +1,4 @@
-import "../styles/modules/Select.module.css";
+import styles from "../styles/modules/Select.module.css";
 
 interface SelectProp {
   /**
@@ -10,6 +10,8 @@ interface SelectProp {
   labelText: string;
 }
 
+const { container, label } = styles;
+
 export const Select = ({
   labelText,
   options,
@@ -17,17 +19,19 @@ export const Select = ({
   htmlFor,
 }: SelectProp) => {
   return (
-    <>
-      <label htmlFor={htmlFor}>{labelText}</label>
+    <div className={container}>
+      <label className={label} htmlFor={htmlFor}>
+        {labelText}
+      </label>
       <select name={htmlFor} id={htmlFor} onChange={handleChange}>
         {options.map((option, index) => {
           return (
             <option value={option} key={index}>
-              {option}x{option}
+              {option}
             </option>
           );
         })}
       </select>
-    </>
+    </div>
   );
 };
