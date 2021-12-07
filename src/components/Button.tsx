@@ -3,9 +3,9 @@ import "../styles/modules/Button.module.css";
 
 interface ButtonProp {
   children: React.ReactNode;
-  // onClick: React.MouseEventHandler;
+  handleClick: React.MouseEventHandler;
 }
 
-export const Button = ({ children }: ButtonProp) => {
-  return <button>{children}</button>;
+export const Button = ({ children, handleClick }: ButtonProp) => {
+  return <button onClick={handleClick}>{children}</button>;
 };
