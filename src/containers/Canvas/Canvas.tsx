@@ -13,14 +13,10 @@ interface CanvasProp {
    */
   height?: number;
   imageSrc: string;
-  /**
-   * Number to divide image into gridSize x gridSize on canvas
-   */
-  gridSize: number;
-  /**
-   * Time complexity for sorting algo
-   */
-  timeComplexity: string;
+  canvasConfig: {
+    numOfSquaresPerSide: string;
+    timeComplexity: string;
+  };
   /**
    * If canvas is in process of sorting
    */
@@ -29,12 +25,15 @@ interface CanvasProp {
 
 export const Canvas = ({
   imageSrc,
-  gridSize,
+  canvasConfig,
   width = 800,
   height = 800,
 }: CanvasProp) => {
   const { container, canvas } = styles;
-  const canvasRef = useCanvas(imageSrc, gridSize);
+  const canvasRef = useCanvas(
+    imageSrc,
+    parseInt(canvasConfig.numOfSquaresPerSide)
+  );
 
   return (
     <div className={container}>
