@@ -3,20 +3,22 @@ import "../styles/App.css";
 import { Canvas } from "./Canvas/Canvas";
 import kittenImg from "../assets/kitten.jpg";
 import { useRef, useState } from "react";
+import { useCanvas } from "../hooks/useCanvas";
 
 function App() {
   const [canvasConfig, setCanvasConfig] = useState({
-    numOfSquaresPerSide: "32",
+    numOfSquaresPerSide: 32,
     timeComplexity: "quadratic",
   });
   const [isSorting, setIsSorting] = useState(false);
 
-  const canvasRef = useRef(null);
+  const canvasRef = useCanvas(kittenImg, canvasConfig.numOfSquaresPerSide);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    const value = event.target.value;
     setCanvasConfig({
       ...canvasConfig,
-      [event.target.name]: event.target.value,
+      [event.target.name]: Number(value) ? Number(value) : value,
     });
   };
 
@@ -31,12 +33,7 @@ function App() {
         sortImage={sortImage}
         isSorting={isSorting}
       />
-      <Canvas
-        ref={canvasRef}
-        canvasConfig={canvasConfig}
-        isSorting={isSorting}
-        imageSrc={kittenImg}
-      />
+      <Canvas ref={canvasRef} isSorting={isSorting} />
     </div>
   );
 }
