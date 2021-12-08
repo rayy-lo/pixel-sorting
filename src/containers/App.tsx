@@ -2,7 +2,7 @@ import Header from "./Header";
 import "../styles/App.css";
 import { Canvas } from "./Canvas/Canvas";
 import kittenImg from "../assets/kitten.jpg";
-import { useState } from "react";
+import { useRef, useState } from "react";
 
 function App() {
   const [canvasConfig, setCanvasConfig] = useState({
@@ -10,6 +10,8 @@ function App() {
     timeComplexity: "quadratic",
   });
   const [isSorting, setIsSorting] = useState(false);
+
+  const canvasRef = useRef(null);
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     setCanvasConfig({
@@ -19,7 +21,7 @@ function App() {
   };
 
   const sortImage = () => {
-    console.log("sort image");
+    console.log(canvasRef.current);
   };
 
   return (
@@ -30,6 +32,7 @@ function App() {
         isSorting={isSorting}
       />
       <Canvas
+        ref={canvasRef}
         canvasConfig={canvasConfig}
         isSorting={isSorting}
         imageSrc={kittenImg}

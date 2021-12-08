@@ -1,3 +1,4 @@
+import { forwardRef } from "react";
 import { useCanvas } from "../../hooks/useCanvas";
 import styles from "../../styles/modules/Canvas.module.css";
 
@@ -23,27 +24,26 @@ interface CanvasProp {
   isSorting: boolean;
 }
 
-export const Canvas = ({
-  imageSrc,
-  canvasConfig,
-  width = 800,
-  height = 800,
-}: CanvasProp) => {
-  const { container, canvas } = styles;
-  const canvasRef = useCanvas(
-    imageSrc,
-    parseInt(canvasConfig.numOfSquaresPerSide)
-  );
+export type Ref = HTMLCanvasElement;
 
-  return (
-    <div className={container}>
-      <canvas
-        ref={canvasRef}
-        className={canvas}
-        width={width}
-        height={height}
-        id="canvas"
-      ></canvas>
-    </div>
-  );
-};
+export const Canvas = forwardRef<Ref, CanvasProp>(
+  ({ imageSrc, canvasConfig, width = 800, height = 800 }, ref) => {
+    const { container, canvas } = styles;
+    // const canvasRef = useCanvas(
+    //   imageSrc,
+    //   parseInt(canvasConfig.numOfSquaresPerSide)
+    // );
+
+    return (
+      <div className={container}>
+        <canvas
+          ref={ref}
+          className={canvas}
+          width={width}
+          height={height}
+          id="canvas"
+        ></canvas>
+      </div>
+    );
+  }
+);
