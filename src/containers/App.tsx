@@ -4,6 +4,7 @@ import { Canvas } from "./Canvas/Canvas";
 import kittenImg from "../assets/kitten.jpg";
 import { useRef, useState } from "react";
 import { useCanvas } from "../hooks/useCanvas";
+import { quadraticSort } from "./Canvas/sorting";
 
 function App() {
   const [canvasConfig, setCanvasConfig] = useState({
@@ -12,7 +13,10 @@ function App() {
   });
   const [isSorting, setIsSorting] = useState(false);
 
-  const canvasRef = useCanvas(kittenImg, canvasConfig.numOfSquaresPerSide);
+  const [canvasRef, pieces] = useCanvas(
+    kittenImg,
+    canvasConfig.numOfSquaresPerSide
+  );
 
   const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
     const value = event.target.value;
@@ -23,7 +27,7 @@ function App() {
   };
 
   const sortImage = () => {
-    console.log(canvasRef.current);
+    console.log(pieces);
   };
 
   return (
