@@ -3,8 +3,8 @@ import { generatePieces, shuffle } from "../containers/Canvas/helpers";
 
 export const useCanvas = (imageSrc: string, gridSize: number) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const pieces = generatePieces(gridSize);
-  shuffle(pieces);
+  const piecesRef = useRef(shuffle(generatePieces(gridSize)));
+
   /**
    * Render shuffled image pieces onto canvas
    */
@@ -21,7 +21,7 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
 
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          const piece = pieces[count++];
+          const piece = piecesRef.current[count++];
 
           ctx?.drawImage(
             img,
@@ -50,5 +50,5 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
     img.src = imageSrc;
   }, [imageSrc, gridSize]);
 
-  return [canvasRef, pieces] as const;
+  return [canvasRef, piecesRef] as const;
 };
