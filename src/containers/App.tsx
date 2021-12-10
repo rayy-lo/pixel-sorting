@@ -2,7 +2,7 @@ import Header from "./Header";
 import "../styles/App.css";
 import { Canvas } from "./Canvas/Canvas";
 import kittenImg from "../assets/kitten.jpg";
-import { useRef, useState } from "react";
+import { useState } from "react";
 import { useCanvas } from "../hooks/useCanvas";
 import { quadraticSort } from "./Canvas/sorting";
 
@@ -13,7 +13,7 @@ function App() {
   });
   const [isSorting, setIsSorting] = useState(false);
 
-  const [canvasRef, pieces] = useCanvas(
+  const [canvasRef, piecesRef] = useCanvas(
     kittenImg,
     canvasConfig.numOfSquaresPerSide
   );
@@ -27,7 +27,8 @@ function App() {
   };
 
   const sortImage = () => {
-    console.log(pieces);
+    const ctx = canvasRef.current?.getContext("2d");
+    quadraticSort(piecesRef.current, ctx!);
   };
 
   return (
