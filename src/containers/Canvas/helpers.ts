@@ -7,7 +7,7 @@ import { Piece } from "../../types";
  *
  */
 
-export const shuffle = (pieces: Piece[]): void => {
+export const shuffle = (pieces: Piece[]) => {
   for (let i = pieces.length - 1; i > 0; i--) {
     const j = Math.floor(Math.random() * (i + 1));
     const temp = pieces[i];
@@ -15,6 +15,8 @@ export const shuffle = (pieces: Piece[]): void => {
     pieces[i] = pieces[j];
     pieces[j] = temp;
   }
+
+  return pieces;
 };
 
 /**

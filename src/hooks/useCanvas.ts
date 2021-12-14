@@ -1,10 +1,9 @@
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { generatePieces, shuffle } from "../containers/Canvas/helpers";
 
 export const useCanvas = (imageSrc: string, gridSize: number) => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const piecesRef = useRef(shuffle(generatePieces(gridSize)));
-
+  const pieces = shuffle(generatePieces(gridSize));
   /**
    * Render shuffled image pieces onto canvas
    */
@@ -21,7 +20,7 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
 
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          const piece = piecesRef.current[count++];
+          const piece = pieces[count++];
 
           ctx?.drawImage(
             img,
@@ -35,12 +34,12 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
             pieceHeight
           );
 
-          piece.imageData = ctx?.getImageData(
-            piece.col * pieceWidth,
-            piece.row * pieceHeight,
-            pieceWidth,
-            pieceHeight
-          );
+          // piece.imageData = ctx?.getImageData(
+          //   piece.col * pieceWidth,
+          //   piece.row * pieceHeight,
+          //   pieceWidth,
+          //   pieceHeight
+          // );
         }
       }
     };
@@ -50,5 +49,5 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
     img.src = imageSrc;
   }, [imageSrc, gridSize]);
 
-  return [canvasRef, piecesRef] as const;
+  return [canvasRef, pieces] as const;
 };

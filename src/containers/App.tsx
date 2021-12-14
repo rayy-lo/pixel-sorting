@@ -8,12 +8,12 @@ import { quadraticSort } from "./Canvas/sorting";
 
 function App() {
   const [canvasConfig, setCanvasConfig] = useState({
-    numOfSquaresPerSide: 32,
+    numOfSquaresPerSide: 16,
     timeComplexity: "quadratic",
   });
   const [isSorting, setIsSorting] = useState(false);
 
-  const [canvasRef, piecesRef] = useCanvas(
+  const [canvasRef, pieces] = useCanvas(
     kittenImg,
     canvasConfig.numOfSquaresPerSide
   );
@@ -28,7 +28,8 @@ function App() {
 
   const sortImage = () => {
     const ctx = canvasRef.current?.getContext("2d");
-    quadraticSort(piecesRef.current, ctx!);
+    quadraticSort(pieces, ctx!, canvasRef.current!);
+    // console.log(pieces);
   };
 
   return (
