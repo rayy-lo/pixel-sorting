@@ -18,7 +18,7 @@ interface CanvasProp {
   isSorting: boolean;
 }
 
-export type Ref = HTMLCanvasElement;
+type Ref = HTMLCanvasElement;
 
 export const Canvas = forwardRef<Ref, CanvasProp>(
   ({ width = 800, height = 800 }, ref) => {
