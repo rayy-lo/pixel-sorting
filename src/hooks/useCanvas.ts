@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect } from "react";
 import { generatePieces, shuffle } from "../containers/Canvas/helpers";
 
 export const useCanvas = (imageSrc: string, gridSize: number) => {
@@ -33,13 +33,6 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
             pieceWidth,
             pieceHeight
           );
-
-          // piece.imageData = ctx?.getImageData(
-          //   piece.col * pieceWidth,
-          //   piece.row * pieceHeight,
-          //   pieceWidth,
-          //   pieceHeight
-          // );
         }
       }
     };
@@ -47,7 +40,7 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
     const img = new Image();
     img.onload = handleImageLoad;
     img.src = imageSrc;
-  }, [imageSrc, gridSize]);
+  }, [imageSrc, gridSize, pieces]);
 
   return [canvasRef, pieces] as const;
 };
