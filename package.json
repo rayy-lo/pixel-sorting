@@ -22,7 +22,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "lint": "eslint \"**/*.{ts,tsx}\""
   },
   "browserslist": {
     "production": [
@@ -42,11 +42,14 @@
     "comlink-loader": "^2.0.0",
     "eslint": "^7.32.0",
     "eslint-config-airbnb": "^19.0.2",
+    "eslint-config-prettier": "^8.3.0",
     "eslint-import-resolver-typescript": "^2.5.0",
     "eslint-plugin-import": "^2.25.3",
     "eslint-plugin-jsx-a11y": "^6.5.1",
+    "eslint-plugin-prettier": "^4.0.0",
     "eslint-plugin-react": "^7.27.1",
     "eslint-plugin-react-hooks": "^4.3.0",
+    "prettier": "2.5.1",
     "typescript-plugin-css-modules": "^3.4.0"
   }
 }
