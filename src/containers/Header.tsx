@@ -1,18 +1,19 @@
-import { Button } from "../components/Button";
-import { Select } from "../components/Select";
-import styles from "../styles/modules/Header.module.css";
+import { Button } from '../components/Button'
+import { Select } from '../components/Select'
+import styles from '../styles/modules/Header.module.css'
+
 interface HeaderProp {
-  handleChange: React.ChangeEventHandler;
-  sortImage: () => void;
-  isSorting: boolean;
+  handleChange: React.ChangeEventHandler
+  sortImage: () => void
+  isSorting: boolean
 }
 
-const { header } = styles;
+const { header } = styles
 
-const gridSizeOptions = ["32", "64", "128"];
-const timeComplexityOptions = ["quadratic", "linear"];
+const gridSizeOptions = ['32', '64', '128']
+const timeComplexityOptions = ['quadratic', 'linear']
 
-function Header({ sortImage, handleChange, isSorting }: HeaderProp) {
+const Header = function ({ sortImage, handleChange, isSorting }: HeaderProp) {
   return (
     <div className={header}>
       <Select
@@ -27,9 +28,9 @@ function Header({ sortImage, handleChange, isSorting }: HeaderProp) {
         handleChange={handleChange}
         options={timeComplexityOptions}
       />
-      <Button handleClick={sortImage}>{isSorting ? "Pause" : "Start"}</Button>
+      <Button handleClick={sortImage}>{isSorting ? 'Pause' : 'Start'}</Button>
     </div>
-  );
+  )
 }
 
-export default Header;
+export default Header

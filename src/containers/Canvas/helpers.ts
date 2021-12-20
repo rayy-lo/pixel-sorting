@@ -1,4 +1,4 @@
-import { Piece } from "../../types";
+import { Piece } from '../../types'
 
 /**
  * Shuffle array in place
@@ -9,15 +9,15 @@ import { Piece } from "../../types";
 
 export const shuffle = (pieces: Piece[]) => {
   for (let i = pieces.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    const temp = pieces[i];
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = pieces[i]
 
-    pieces[i] = pieces[j];
-    pieces[j] = temp;
+    pieces[i] = pieces[j]
+    pieces[j] = temp
   }
 
-  return pieces;
-};
+  return pieces
+}
 
 /**
  * Create array of objects to represent each puzzle piece
@@ -27,10 +27,10 @@ export const shuffle = (pieces: Piece[]) => {
  */
 
 export const generatePieces = (gridSize: number): Piece[] => {
-  const pieces = [];
-  const rows = gridSize;
-  const cols = gridSize;
-  let piece = 0;
+  const pieces = []
+  const rows = gridSize
+  const cols = gridSize
+  let piece = 0
 
   for (let i = 0; i < rows; i++) {
     for (let j = 0; j < cols; j++) {
@@ -38,12 +38,12 @@ export const generatePieces = (gridSize: number): Piece[] => {
         row: i,
         col: j,
         pieceNum: piece++,
-      });
+      })
     }
   }
 
-  return pieces;
-};
+  return pieces
+}
 
 export const updateCanvas = (
   firstPiece: Piece,
@@ -51,14 +51,14 @@ export const updateCanvas = (
   canvas: HTMLCanvasElement,
   offscreen: OffscreenCanvas
 ) => {
-  const canvasWidth = 800;
-  const canvasHeight = 800;
-  const rows = 16;
-  const cols = 16;
-  const pieceWidth = canvasWidth! / cols;
-  const pieceHeight = canvasHeight! / rows;
+  const canvasWidth = 800
+  const canvasHeight = 800
+  const rows = 16
+  const cols = 16
+  const pieceWidth = canvasWidth! / cols
+  const pieceHeight = canvasHeight! / rows
 
-  const ctx = canvas.getContext("2d");
+  const ctx = canvas.getContext('2d')
 
   // const offscreen = new OffscreenCanvas(canvasWidth, canvasHeight);
   // const offCtx = offscreen.getContext("2d");
@@ -68,7 +68,7 @@ export const updateCanvas = (
   //   throw new Error("Offscreen Canvas is null");
   // }
 
-  console.log("running");
+  console.log('running')
 
   ctx?.drawImage(
     offscreen,
@@ -80,7 +80,7 @@ export const updateCanvas = (
     secondPiece.row * pieceHeight,
     pieceWidth,
     pieceHeight
-  );
+  )
 
   ctx?.drawImage(
     offscreen,
@@ -92,5 +92,5 @@ export const updateCanvas = (
     firstPiece.row * pieceHeight,
     pieceWidth,
     pieceHeight
-  );
-};
+  )
+}
