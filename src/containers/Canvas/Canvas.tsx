@@ -12,10 +12,6 @@ interface CanvasProp {
    * @defaultValue 800
    */
   height?: number
-  /**
-   * If canvas is in process of sorting
-   */
-  isSorting: boolean
 }
 
 type Ref = HTMLCanvasElement

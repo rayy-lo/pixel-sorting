@@ -1,15 +1,15 @@
-import { useState } from 'react'
+import { useState, ChangeEvent } from 'react'
 import Header from './Header'
 import '../styles/App.css'
 import { Canvas } from './Canvas/Canvas'
 import kittenImg from '../assets/kitten.jpg'
 import { useCanvas } from '../hooks/useCanvas'
-import { quadraticSort } from './Canvas/sorting'
+// import { quadraticSort } from './Canvas/sorting'
 import Worker from '../worker/index'
 
 const workerInstance = new Worker()
 
-const App = function () {
+const App = () => {
   const [canvasConfig, setCanvasConfig] = useState({
     numOfSquaresPerSide: 16,
     timeComplexity: 'quadratic',
@@ -18,7 +18,7 @@ const App = function () {
 
   const [canvasRef, pieces] = useCanvas(kittenImg, canvasConfig.numOfSquaresPerSide)
 
-  const handleChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
+  const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
     const { value } = event.target
     setCanvasConfig({
       ...canvasConfig,
@@ -30,6 +30,7 @@ const App = function () {
     // const ctx = canvasRef.current?.getContext("2d");
 
     const processed = await workerInstance.quadraticSort(pieces)
+    console.log(processed)
 
     // const data = "Some data";
 

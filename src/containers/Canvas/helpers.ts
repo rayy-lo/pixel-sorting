@@ -12,7 +12,9 @@ export const shuffle = (pieces: Piece[]) => {
     const j = Math.floor(Math.random() * (i + 1))
     const temp = pieces[i]
 
+    // eslint-disable-next-line no-param-reassign
     pieces[i] = pieces[j]
+    // eslint-disable-next-line no-param-reassign
     pieces[j] = temp
   }
 
@@ -68,7 +70,6 @@ export const updateCanvas = (
   //   throw new Error("Offscreen Canvas is null");
   // }
 
-  console.log('running')
 
   ctx?.drawImage(
     offscreen,

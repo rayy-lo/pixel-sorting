@@ -6,6 +6,10 @@ interface ButtonProp {
   handleClick: React.MouseEventHandler
 }
 
-export var Button = function ({ children, handleClick }: ButtonProp) {
-  return <button onClick={handleClick}>{children}</button>
+export const Button = ({ children, handleClick }: ButtonProp) => {
+  return (
+    <button type="button" onClick={handleClick}>
+      {children}
+    </button>
+  )
 }

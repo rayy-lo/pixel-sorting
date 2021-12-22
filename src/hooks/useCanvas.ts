@@ -20,9 +20,11 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
 
       for (let y = 0; y < rows; y++) {
         for (let x = 0; x < cols; x++) {
-          const piece = pieces[count++]
+          const piece = pieces[count += 1]
 
           ctx?.drawImage(
+            // eslint-disable-next-line no-use-before-define
+            // eslint-disable-next-line @typescript-eslint/no-use-before-define
             img,
             x * pieceWidth,
             y * pieceHeight,
