@@ -5,9 +5,6 @@ import { Canvas } from './Canvas/Canvas'
 import kittenImg from '../assets/kitten.jpg'
 import { useCanvas } from '../hooks/useCanvas'
 // import { quadraticSort } from './Canvas/sorting'
-import Worker from '../worker/index'
-
-const workerInstance = new Worker()
 
 const App = () => {
   const [canvasConfig, setCanvasConfig] = useState({
@@ -28,27 +25,14 @@ const App = () => {
 
   const sortImage = async () => {
     // const ctx = canvasRef.current?.getContext("2d");
-
-    const processed = await workerInstance.quadraticSort(pieces)
-    console.log(processed)
-
-    // const data = "Some data";
-
-    // return new Promise(async (resolve) => {
-    // Use a web worker to process the data
-    // const processed = await workerInstance.processData(data);
-
-    // resolve(processed);
-    // });
-
-    // quadraticSort(pieces, canvasRef.current!);
-    // console.log(pieces);
+    const worker = new Worker(new URL('../workers/sorting.ts', import.meta.url))
+    worker.postMessage(pieces)
   }
 
   return (
     <div className="App">
       <Header handleChange={handleChange} sortImage={sortImage} isSorting={isSorting} />
-      <Canvas ref={canvasRef} isSorting={isSorting} />
+      <Canvas ref={canvasRef} />
     </div>
   )
 }
