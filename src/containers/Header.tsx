@@ -6,7 +6,6 @@ import styles from '../styles/modules/Header.module.css'
 interface HeaderProp {
   handleChange: ChangeEventHandler
   sortImage: () => void
-  isSorting: boolean
 }
 
 const { header } = styles
@@ -14,7 +13,7 @@ const { header } = styles
 const gridSizeOptions = ['32', '64', '128']
 const timeComplexityOptions = ['quadratic', 'linear']
 
-const Header = ({ sortImage, handleChange, isSorting }: HeaderProp) => {
+const Header = ({ sortImage, handleChange }: HeaderProp) => {
   return (
     <div className={header}>
       <Select
@@ -29,7 +28,7 @@ const Header = ({ sortImage, handleChange, isSorting }: HeaderProp) => {
         handleChange={handleChange}
         options={timeComplexityOptions}
       />
-      <Button handleClick={sortImage}>{isSorting ? 'Pause' : 'Start'}</Button>
+      <Button handleClick={sortImage}>Sort</Button>
     </div>
   )
 }
