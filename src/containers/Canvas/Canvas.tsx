@@ -4,14 +4,14 @@ import styles from '../../styles/modules/Canvas.module.css'
 interface CanvasProp {
   /**
    * Width of canvas
-   * @defaultValue 800
+   * @defaultValue 600
    */
-  width?: number
+  width: number
   /**
    * Height of canvas
-   * @defaultValue 800
+   * @defaultValue 600
    */
-  height?: number
+  height: number
 }
 
 type Ref = HTMLCanvasElement
