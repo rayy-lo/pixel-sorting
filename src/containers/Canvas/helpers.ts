@@ -2,9 +2,7 @@ import { Piece } from '../../types'
 
 /**
  * Shuffle array in place
- *
  * @param {Piece[]} pieces -
- *
  */
 
 export const shuffle = (pieces: Piece[]) => {
@@ -23,8 +21,7 @@ export const shuffle = (pieces: Piece[]) => {
 
 /**
  * Create array of objects to represent each puzzle piece
- * @param gridSize
- *
+ * @param {number} gridSize - Number of rows and columns
  * @returns {Piece[]}
  */
 
