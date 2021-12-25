@@ -16,8 +16,23 @@ const quadraticSort = (pieces: Piece[]) => {
   }
 }
 
+const linearSort = (pieces: Piece[]) => {
+  console.log('A linear sort algo')
+}
+
 self.onmessage = (e) => {
-    quadraticSort(e.data);
+    const complexity = e.data[0];
+
+    switch(complexity) {
+      case 'quadratic':
+        quadraticSort(e.data[1]);
+        break;
+      case 'linear':
+        linearSort(e.data[1]);
+        break;
+      default:
+        console.error('No sorting fn executed')
+    }
 }
 
 export {}
