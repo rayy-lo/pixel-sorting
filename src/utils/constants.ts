@@ -1,0 +1,1 @@
+export const squareOptions = [8, 16, 32, 64]
