@@ -5,7 +5,7 @@ export interface Piece {
 }
 
 export interface CanvasConfig {
-  squares: 8 |16 | 32 | 64,
+  squares: 10 |25 | 50 | 100,
   timeComplexity: 'quadratic' | 'linear'
   height: 500 | 600 | 700 | 800,
   width: 500 | 600 | 700 | 800
