@@ -20,19 +20,22 @@ const linearSort = (pieces: Piece[]) => {
   console.log('A linear sort algo')
 }
 
-self.onmessage = (e) => {
-    const complexity = e.data[0];
+interface algoObject {
+  [key: string] : any
+}
 
-    switch(complexity) {
-      case 'quadratic':
-        quadraticSort(e.data[1]);
-        break;
-      case 'linear':
-        linearSort(e.data[1]);
-        break;
-      default:
-        console.error('No sorting fn executed')
-    }
+self.onmessage = (e) => {
+  const complexity = e.data[0];
+  const pieces = e.data[1];
+
+  const algorithms: algoObject = {
+    'quadratic': quadraticSort(pieces),
+    'linear': linearSort(pieces)
+  }
+
+  if(algorithms[complexity] === undefined) return
+
+  algorithms[complexity]();
 }
 
 export {}
