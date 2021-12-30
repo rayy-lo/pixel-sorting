@@ -6,11 +6,11 @@ const quadraticSort = (pieces: Piece[]) => {
     for (let i = 0; i < pieces.length; i++) {
       for (let j = i + 1; j < pieces.length; j++) {
         if (pieces[j].pieceNum < pieces[i].pieceNum) {
-          postMessage([pieces[i], pieces[j]])
-
           const temp = pieces[i];
           pieces[i] = pieces[j]
           pieces[j] = temp
+
+          postMessage([pieces[j], pieces[i], pieces])
         }
       }
   }
@@ -29,13 +29,18 @@ self.onmessage = (e) => {
   const pieces = e.data[1];
 
   const algorithms: algoObject = {
-    'quadratic': quadraticSort(pieces),
-    'linear': linearSort(pieces)
+    'quadratic': () => quadraticSort(pieces),
+    'linear': () => linearSort(pieces)
   }
 
-  if(algorithms[complexity] === undefined) return
+  if(algorithms[complexity] === undefined) {
+    console.error('No algorithm found based on complexity')
+    return
+  }
 
   algorithms[complexity]();
+
+  self.close();
 }
 
 export {}
