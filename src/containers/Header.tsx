@@ -2,33 +2,35 @@ import { ChangeEventHandler } from 'react'
 import { Button } from '../components/Button'
 import { Select } from '../components/Select'
 import styles from '../styles/modules/Header.module.css'
+import { squareOptions, timeOptions } from '../utils/constants'
 
 interface HeaderProp {
   handleChange: ChangeEventHandler
-  sortImage: () => void
+  handleSort: () => void
+  handleStop: () => void
 }
 
 const { header } = styles
 
-const gridSizeOptions = ['32', '64', '128']
-const timeComplexityOptions = ['quadratic', 'linear']
-
-const Header = ({ sortImage, handleChange }: HeaderProp) => {
+const Header = ({ handleSort, handleStop, handleChange }: HeaderProp) => {
   return (
     <div className={header}>
       <Select
-        labelText="Grid Size: "
-        htmlFor="numOfSquaresPerSide"
+        labelText="Columns & Rows: "
+        htmlFor="squares"
         handleChange={handleChange}
-        options={gridSizeOptions}
+        options={squareOptions}
       />
       <Select
         labelText="Time Complexity: "
         htmlFor="timeComplexity"
         handleChange={handleChange}
-        options={timeComplexityOptions}
+        options={timeOptions}
       />
-      <Button handleClick={sortImage}>Sort</Button>
+      <div className="">
+        <Button handleClick={handleSort}>Start</Button>
+        <Button handleClick={handleStop}>Stop</Button>
+      </div>
     </div>
   )
 }
