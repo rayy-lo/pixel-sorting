@@ -1,8 +1,11 @@
 .container {
-  flex: 1;
+  margin-top: 3rem;
 }
 
 .canvas {
   display: block;
   margin: 0 auto;
+  padding: 0 3rem;
+  background: var(--clr-ntrl-light);
+  border-radius: 1rem;
 }
