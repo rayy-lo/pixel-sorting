@@ -6,6 +6,6 @@
   display: block;
   margin: 0 auto;
   padding: 0 3rem;
-  background: var(--clr-ntrl-light);
+  background: var(--clr-primary-ltr);
   border-radius: 1rem;
 }

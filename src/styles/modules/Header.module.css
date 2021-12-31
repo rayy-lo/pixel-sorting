@@ -1,6 +1,12 @@
 .header {
-  padding: 2rem;
+  padding: 1.5rem 2rem;
   display: flex;
   justify-content: space-evenly;
   border-bottom: 1px solid var(--clr-ntrl);
+  background: var(--clr-primary);
+}
+
+.buttonWrapper {
+  display: flex;
+  align-items: end;
 }
