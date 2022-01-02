@@ -1,24 +1,23 @@
 import { useState, ChangeEvent } from 'react'
 
 import Header from './Header'
-import { Canvas } from './Canvas'
+import { MemoCanvas } from './Canvas'
 import { CanvasConfig } from '../types'
 import { useCanvas } from '../utils/useCanvas'
-
-import kittenImg from '../assets/images/kitten.jpeg'
 
 const App = () => {
   const [canvasConfig, setCanvasConfig] = useState<CanvasConfig>({
     /**
      * Number of rows and columns
      */
-    squares: 10,
+    squares: 5,
     timeComplexity: 'quadratic',
     height: 600,
     width: 600,
   })
 
-  const [canvasRef, pieces] = useCanvas(kittenImg, canvasConfig.squares)
+  const [canvasRef, pieces] = useCanvas(canvasConfig.squares)
+
   const worker = new Worker(new URL('../workers/sorting.ts', import.meta.url))
 
   const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
@@ -29,20 +28,10 @@ const App = () => {
     })
   }
 
-  const handleStop = () => {
-    console.log('stop sorting')
-
-    worker.terminate()
-  }
-
-  const handleSort = () => {
+  const startSort = () => {
     const pieceWidth = canvasConfig.width / canvasConfig.squares
     const pieceHeight = canvasConfig.height / canvasConfig.squares
     const ctx = canvasRef.current?.getContext('2d')
-
-    if (!window.Worker) {
-      console.log('create new worker')
-    }
 
     worker.postMessage([canvasConfig.timeComplexity, pieces])
     worker.onmessage = (e) => {
@@ -81,8 +70,8 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header handleChange={handleChange} handleStop={handleStop} handleSort={handleSort} />
-      <Canvas height={canvasConfig.height} width={canvasConfig.width} ref={canvasRef} />
+      <Header startSort={startSort} handleChange={handleChange} />
+      <MemoCanvas height={canvasConfig.height} width={canvasConfig.width} ref={canvasRef} />
     </div>
   )
 }
