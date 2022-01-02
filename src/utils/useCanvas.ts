@@ -1,9 +1,12 @@
 import { useRef, useEffect } from 'react'
 import { generatePieces, shuffle } from "./helpers"
+import { images } from "./constants";
 
-export const useCanvas = (imageSrc: string, gridSize: number) => {
+export const useCanvas = (gridSize: number) => {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const pieces = shuffle(generatePieces(gridSize))
+  const image = images[Math.floor(Math.random() * images.length)];
+  
   /**
    * Render shuffled image pieces onto canvas
    */
@@ -41,8 +44,8 @@ export const useCanvas = (imageSrc: string, gridSize: number) => {
 
     const img = new Image()
     img.onload = handleImageLoad
-    img.src = imageSrc
-  }, [imageSrc, gridSize, pieces])
+    img.src = image
+  }, [image, gridSize, pieces])
 
   return [canvasRef, pieces] as const
 }
