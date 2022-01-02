@@ -1,18 +1,17 @@
 import { ChangeEventHandler } from 'react'
 import { Button } from '../components/Button'
 import { Select } from '../components/Select'
-import styles from '../styles/modules/Header.module.css'
 import { squareOptions, timeOptions } from '../utils/constants'
+import styles from '../styles/modules/Header.module.css'
 
 interface HeaderProp {
   handleChange: ChangeEventHandler
-  handleSort: () => void
-  handleStop: () => void
+  startSort: () => void
 }
 
-const { header } = styles
+const { header, buttonWrapper } = styles
 
-const Header = ({ handleSort, handleStop, handleChange }: HeaderProp) => {
+const Header = ({ startSort, handleChange }: HeaderProp) => {
   return (
     <div className={header}>
       <Select
@@ -27,9 +26,10 @@ const Header = ({ handleSort, handleStop, handleChange }: HeaderProp) => {
         handleChange={handleChange}
         options={timeOptions}
       />
-      <div className="">
-        <Button handleClick={handleSort}>Start</Button>
-        <Button handleClick={handleStop}>Stop</Button>
+      <div className={buttonWrapper}>
+        <Button type="button" handleClick={startSort}>
+          Start
+        </Button>
       </div>
     </div>
   )
