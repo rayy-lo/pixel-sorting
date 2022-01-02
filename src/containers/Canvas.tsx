@@ -1,4 +1,4 @@
-import { forwardRef } from 'react'
+import { forwardRef, memo } from 'react'
 import styles from '../styles/modules/Canvas.module.css'
 
 interface CanvasProp {
@@ -14,9 +14,7 @@ interface CanvasProp {
   height: number
 }
 
-type Ref = HTMLCanvasElement
-
-export const Canvas = forwardRef<Ref, CanvasProp>(({ width, height }, ref) => {
+const Canvas = forwardRef<HTMLCanvasElement, CanvasProp>(({ width, height }, ref) => {
   const { container, canvas } = styles
 
   return (
@@ -25,3 +23,5 @@ export const Canvas = forwardRef<Ref, CanvasProp>(({ width, height }, ref) => {
     </div>
   )
 })
+
+export const MemoCanvas = memo(Canvas)
