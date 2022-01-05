@@ -1,19 +1,25 @@
-/* eslint-disable no-param-reassign */
 /* eslint-disable no-restricted-globals */
 import { Piece } from '../types/index'
 
 const quadraticSort = (pieces: Piece[]) => {
-    for (let i = 0; i < pieces.length; i++) {
-      for (let j = i + 1; j < pieces.length; j++) {
-        if (pieces[j].pieceNum < pieces[i].pieceNum) {
-          const temp = pieces[i];
-          pieces[i] = pieces[j]
-          pieces[j] = temp
+    const arr = [...pieces];
 
-          postMessage([pieces[j], pieces[i], pieces])
+    for (let i = 0; i < arr.length; i++) {
+      for (let j = i + 1; j < arr.length; j++) {
+        if (arr[j].pieceNum < arr[i].pieceNum) {
+          postMessage([arr[j], arr[i]])
+          
+          const temp = arr[i];
+          arr[i] = arr[j]
+          arr[j] = temp
+
         }
       }
-  }
+    }
+}
+
+const selectionSort = (pieces: Piece[]) => {
+  console.log('selection sort')
 }
 
 const linearSort = (pieces: Piece[]) => {
@@ -29,8 +35,8 @@ self.onmessage = (e) => {
   const pieces = e.data[1];
 
   const algorithms: algoObject = {
-    'quadratic': () => quadraticSort(pieces),
-    'linear': () => linearSort(pieces)
+    quadratic: () => quadraticSort(pieces),
+    linear: () => linearSort(pieces)
   }
 
   if(algorithms[complexity] === undefined) {

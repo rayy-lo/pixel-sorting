@@ -1,22 +1,23 @@
 import { Piece } from '../types/index'
 
 /**
- * Shuffle array in place
+ * Returns a shuffled array
  * @param {Piece[]} pieces -
+ * @returns {Piece[]} 
  */
 
 export const shuffle = (pieces: Piece[]) => {
-  for (let i = pieces.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1))
-    const temp = pieces[i]
+  const shuffledPieces = [...pieces];
 
-    // eslint-disable-next-line no-param-reassign
-    pieces[i] = pieces[j]
-    // eslint-disable-next-line no-param-reassign
-    pieces[j] = temp
+  for (let i = shuffledPieces.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1))
+    const temp = shuffledPieces[i]
+
+    shuffledPieces[i] = shuffledPieces[j]
+    shuffledPieces[j] = temp
   }
 
-  return pieces
+  return shuffledPieces
 }
 
 /**
