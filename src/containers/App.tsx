@@ -11,7 +11,7 @@ const App = () => {
      * Number of rows and columns
      */
     squares: 5,
-    timeComplexity: 'quadratic',
+    sortingMethod: 'naive',
     height: 600,
     width: 600,
   })
@@ -33,7 +33,7 @@ const App = () => {
     const pieceHeight = canvasConfig.height / canvasConfig.squares
     const ctx = canvasRef.current?.getContext('2d')
 
-    worker.postMessage([canvasConfig.timeComplexity, pieces])
+    worker.postMessage([canvasConfig.sortingMethod, pieces])
     worker.onmessage = (e) => {
       const firstPiece = e.data[0]
       const secondPiece = e.data[1]
