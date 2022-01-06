@@ -1,7 +1,7 @@
 /* eslint-disable no-restricted-globals */
 import { Piece } from '../types/index'
 
-const quadraticSort = (pieces: Piece[]) => {
+const naiveSort = (pieces: Piece[]) => {
     const arr = [...pieces];
 
     for (let i = 0; i < arr.length; i++) {
@@ -19,11 +19,21 @@ const quadraticSort = (pieces: Piece[]) => {
 }
 
 const selectionSort = (pieces: Piece[]) => {
-  console.log('selection sort')
-}
+  const arr = [...pieces];
 
-const linearSort = (pieces: Piece[]) => {
-  console.log('A linear sort algo')
+  for (let i = 0; i < arr.length; i++) {
+    let minIndex = i;
+    for (let j = i + 1; j < arr.length; j++) {
+      if(arr[j].pieceNum < arr[minIndex].pieceNum){
+        minIndex = j;
+      }
+    }
+    
+    postMessage([arr[minIndex], arr[i]])
+    const temp = arr[i];
+    arr[i] = arr[minIndex];
+    arr[minIndex] = temp 
+  }
 }
 
 interface algoObject {
@@ -35,8 +45,8 @@ self.onmessage = (e) => {
   const pieces = e.data[1];
 
   const algorithms: algoObject = {
-    quadratic: () => quadraticSort(pieces),
-    linear: () => linearSort(pieces)
+    'selection sort': () => selectionSort(pieces),
+    'naive': () => naiveSort(pieces),
   }
 
   if(algorithms[complexity] === undefined) {
