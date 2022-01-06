@@ -1,7 +1,7 @@
 import { ChangeEventHandler } from 'react'
 import { Button } from '../components/Button'
 import { Select } from '../components/Select'
-import { squareOptions, timeOptions } from '../utils/constants'
+import { squareOptions, algoOptions } from '../utils/constants'
 import styles from '../styles/modules/Header.module.css'
 
 interface HeaderProp {
@@ -24,7 +24,7 @@ const Header = ({ startSort, handleChange }: HeaderProp) => {
         labelText="Sorting Method"
         htmlFor="sortingMethod"
         handleChange={handleChange}
-        options={timeOptions}
+        options={algoOptions}
       />
       <div className={buttonWrapper}>
         <Button type="button" handleClick={startSort}>
