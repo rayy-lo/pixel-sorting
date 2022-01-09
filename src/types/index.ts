@@ -6,7 +6,7 @@ export interface Piece {
 
 export interface CanvasConfig {
   squares: 5 | 10 | 15
-  sortingMethod: 'naive' | 'selection sort'
+  sortingMethod: 'naive' | 'selection' | 'insertion'
   height: 600
   width: 600
 }

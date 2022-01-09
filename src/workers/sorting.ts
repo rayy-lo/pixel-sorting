@@ -36,6 +36,27 @@ const selectionSort = (pieces: Piece[]) => {
   }
 }
 
+const bubbleSort = (pieces: Piece[]) => {
+  const arr = [...pieces];
+
+
+}
+
+const insertionSort = (pieces: Piece[]) => {
+  const arr = [...pieces];
+
+  for(let i = 1; i < arr.length; i++){
+
+    while(i > 0 && arr[i].pieceNum < arr[i-1].pieceNum){
+      postMessage([arr[i-1], arr[i]])
+      const temp = arr[i];
+      arr[i] = arr[i-1];
+      arr[i-1] = temp 
+      i-= 1;
+    }
+  }
+}
+
 interface algoObject {
   [key: string] : any
 }
@@ -45,8 +66,9 @@ self.onmessage = (e) => {
   const pieces = e.data[1];
 
   const algorithms: algoObject = {
-    'selection sort': () => selectionSort(pieces),
+    'selection': () => selectionSort(pieces),
     'naive': () => naiveSort(pieces),
+    'insertion': () => insertionSort(pieces)
   }
 
   if(algorithms[complexity] === undefined) {
