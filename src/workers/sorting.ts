@@ -68,6 +68,23 @@ const insertionSort = (pieces: Piece[]) => {
   }
 }
 
+const quickSort = (pieces: Piece[], startIndex: number, endIndex: number) => {
+  
+//   function partition(arr, startIndex, endIndex){
+//     const pivot = arr[endIndex];
+//     let j = startIndex - 1;
+    
+//     for (let i = 0; i < endIndex; i++) {
+//       if(arr[i] < pivot){
+//         j += 1;
+//         const temp = arr[i];
+//         arr[i] = arr[j];
+//         arr[j] = temp 
+//       }
+//     }
+//   }
+}
+
 interface algoObject {
   [key: string] : any
 }
@@ -78,9 +95,10 @@ self.onmessage = (e) => {
 
   const algorithms: algoObject = {
     'selection': () => selectionSort(pieces),
-    'naive': () => naiveSort(pieces),
+    'brute': () => naiveSort(pieces),
     'insertion': () => insertionSort(pieces),
-    'bubble': () => bubbleSort(pieces)
+    'bubble': () => bubbleSort(pieces),
+    'quick': () => quickSort(pieces, 0, pieces.length)
   }
 
   if(algorithms[complexity] === undefined) {
