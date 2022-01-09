@@ -39,7 +39,18 @@ const selectionSort = (pieces: Piece[]) => {
 const bubbleSort = (pieces: Piece[]) => {
   const arr = [...pieces];
 
-
+  for(let i = arr.length - 1; i > 0; i--){
+    for(let j = 0; j < i; j++ ){
+      if(arr[j].pieceNum > arr[j + 1].pieceNum){
+        postMessage([arr[j+1], arr[j]])
+        
+        const temp = arr[j + 1];
+        arr[j + 1] = arr[j];
+        arr[j] = temp;
+      }
+    }
+  }
+      
 }
 
 const insertionSort = (pieces: Piece[]) => {
@@ -68,7 +79,8 @@ self.onmessage = (e) => {
   const algorithms: algoObject = {
     'selection': () => selectionSort(pieces),
     'naive': () => naiveSort(pieces),
-    'insertion': () => insertionSort(pieces)
+    'insertion': () => insertionSort(pieces),
+    'bubble': () => bubbleSort(pieces)
   }
 
   if(algorithms[complexity] === undefined) {

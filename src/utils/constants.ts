@@ -6,6 +6,6 @@ import rose from '../assets/images/rose.jpeg'
 
 export const images = [kitten, golden, bird, eiffel, rose];
 export const squareOptions = [5, 10, 15]
-export const algoOptions = ['naive', 'selection', 'insertion']
+export const algoOptions = ['naive', 'selection', 'insertion', 'bubble']
 export const canvasWidth = 600;
 export const canvasHeight = 600;
