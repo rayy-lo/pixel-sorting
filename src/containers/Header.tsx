@@ -15,16 +15,16 @@ const Header = ({ startSort, handleChange }: HeaderProp) => {
   return (
     <div className={header}>
       <Select
-        labelText="Columns & Rows"
-        htmlFor="squares"
-        handleChange={handleChange}
-        options={squareOptions}
-      />
-      <Select
         labelText="Sorting Method"
         htmlFor="sortingMethod"
         handleChange={handleChange}
         options={algoOptions}
+      />
+      <Select
+        labelText="Columns & Rows"
+        htmlFor="squares"
+        handleChange={handleChange}
+        options={squareOptions}
       />
       <div className={buttonWrapper}>
         <Button type="button" handleClick={startSort}>
