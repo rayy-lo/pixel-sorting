@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-restricted-globals */
 import { Piece } from '../types/index'
 
@@ -68,22 +69,34 @@ const insertionSort = (pieces: Piece[]) => {
   }
 }
 
-const quickSort = (pieces: Piece[], startIndex: number, endIndex: number) => {
-  
+/**
+ * TODO:
+ * Quick sort implementation
+ * @param pieces 
+ * @param startIndex 
+ * @param endIndex 
+ */
+// const quickSort = (pieces: Piece[], startIndex: number, endIndex: number) => {
+ 
 //   function partition(arr, startIndex, endIndex){
-//     const pivot = arr[endIndex];
+//     const pivot = arr[endIndex].pieceNum;
 //     let j = startIndex - 1;
     
 //     for (let i = 0; i < endIndex; i++) {
-//       if(arr[i] < pivot){
+//       if(arr[i].pieceNum < pivot){
 //         j += 1;
 //         const temp = arr[i];
 //         arr[i] = arr[j];
 //         arr[j] = temp 
 //       }
 //     }
+
+
+
+//     return j + 1;
 //   }
-}
+
+// }
 
 interface algoObject {
   [key: string] : any
@@ -94,11 +107,11 @@ self.onmessage = (e) => {
   const pieces = e.data[1];
 
   const algorithms: algoObject = {
-    'selection': () => selectionSort(pieces),
+    // 'selection': () => selectionSort(pieces),
     'brute': () => naiveSort(pieces),
     'insertion': () => insertionSort(pieces),
     'bubble': () => bubbleSort(pieces),
-    'quick': () => quickSort(pieces, 0, pieces.length)
+    // 'quick': () => quickSort(pieces, 0, pieces.length)
   }
 
   if(algorithms[complexity] === undefined) {
