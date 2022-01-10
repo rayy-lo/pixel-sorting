@@ -1,0 +1,23 @@
+{
+  "files": {
+    "main.css": "/pixel-sorting/static/css/main.af2bffe3.css",
+    "main.js": "/pixel-sorting/static/js/main.edadcd19.js",
+    "static/js/422.18c24153.chunk.js": "/pixel-sorting/static/js/422.18c24153.chunk.js",
+    "static/media/AdobeClean-Black.otf": "/pixel-sorting/static/media/AdobeClean-Black.059eade325cede10c6b7.otf",
+    "static/media/AdobeClean-Bold.otf": "/pixel-sorting/static/media/AdobeClean-Bold.ebfd1bee21c9b58be3ed.otf",
+    "static/media/AdobeClean-Regular.otf": "/pixel-sorting/static/media/AdobeClean-Regular.5572ba78b2535348b51c.otf",
+    "static/media/eiffel.jpeg": "/pixel-sorting/static/media/eiffel.7b44e40c38781fff8dbe.jpeg",
+    "static/media/golden.jpeg": "/pixel-sorting/static/media/golden.e9f8013ed9e1e3c81c8f.jpeg",
+    "static/media/rose.jpeg": "/pixel-sorting/static/media/rose.ef92c61f17525cc4f576.jpeg",
+    "static/media/kitten.jpeg": "/pixel-sorting/static/media/kitten.7304d615aea199f5b3fc.jpeg",
+    "static/media/bird.jpeg": "/pixel-sorting/static/media/bird.20ed9d2b403ff6eceff0.jpeg",
+    "index.html": "/pixel-sorting/index.html",
+    "main.af2bffe3.css.map": "/pixel-sorting/static/css/main.af2bffe3.css.map",
+    "main.edadcd19.js.map": "/pixel-sorting/static/js/main.edadcd19.js.map",
+    "422.18c24153.chunk.js.map": "/pixel-sorting/static/js/422.18c24153.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.af2bffe3.css",
+    "static/js/main.edadcd19.js"
+  ]
+}
