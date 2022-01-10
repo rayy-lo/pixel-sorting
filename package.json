@@ -1,5 +1,6 @@
 {
   "name": "pixel-sorting-game",
+  "homepage": "https://rayy-lo.github.io/pixel-sorting",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +12,7 @@
     "@types/offscreencanvas": "^2019.6.4",
     "@types/react": "^17.0.34",
     "@types/react-dom": "^17.0.11",
+    "gh-pages": "^3.2.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-scripts": "^5.0.0",
@@ -22,7 +24,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint \"**/*.{ts,tsx}\""
+    "lint": "eslint \"**/*.{ts,tsx}\"",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
