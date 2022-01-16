@@ -6,7 +6,7 @@ export interface Piece {
 
 export interface CanvasConfig {
   squares: 5 | 10 | 15
-  sortingMethod: 'brute' | 'selection' | 'insertion' | 'bubble' | 'quick'
+  sortingMethod: 'brute force' | 'selection sort' | 'insertion sort' | 'bubble sort' | 'quick sort'
   height: 600
   width: 600
 }

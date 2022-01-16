@@ -11,7 +11,7 @@ const App = () => {
      * Number of rows and columns
      */
     squares: 5,
-    sortingMethod: 'brute',
+    sortingMethod: 'brute force',
     height: 600,
     width: 600,
   })

@@ -2,6 +2,12 @@
 /* eslint-disable no-restricted-globals */
 import { Piece } from '../types/index'
 
+const swap = (arr: Piece[], a: number, b: number) => {
+  const temp = arr[a];
+  arr[a] = arr[b];
+  arr[b] = temp;
+}
+
 const naiveSort = (pieces: Piece[]) => {
     const arr = [...pieces];
 
@@ -9,11 +15,7 @@ const naiveSort = (pieces: Piece[]) => {
       for (let j = i + 1; j < arr.length; j++) {
         if (arr[j].pieceNum < arr[i].pieceNum) {
           postMessage([arr[j], arr[i]])
-          
-          const temp = arr[i];
-          arr[i] = arr[j]
-          arr[j] = temp
-
+          swap(arr, j, i);
         }
       }
     }
@@ -43,11 +45,8 @@ const bubbleSort = (pieces: Piece[]) => {
   for(let i = arr.length - 1; i > 0; i--){
     for(let j = 0; j < i; j++ ){
       if(arr[j].pieceNum > arr[j + 1].pieceNum){
+        swap(arr, j+1, j)
         postMessage([arr[j+1], arr[j]])
-        
-        const temp = arr[j + 1];
-        arr[j + 1] = arr[j];
-        arr[j] = temp;
       }
     }
   }
@@ -61,42 +60,37 @@ const insertionSort = (pieces: Piece[]) => {
 
     while(i > 0 && arr[i].pieceNum < arr[i-1].pieceNum){
       postMessage([arr[i-1], arr[i]])
-      const temp = arr[i];
-      arr[i] = arr[i-1];
-      arr[i-1] = temp 
+      swap(arr, i, i-1)
       i-= 1;
     }
   }
 }
 
-/**
- * TODO:
- * Quick sort implementation
- * @param pieces 
- * @param startIndex 
- * @param endIndex 
- */
-// const quickSort = (pieces: Piece[], startIndex: number, endIndex: number) => {
- 
-//   function partition(arr, startIndex, endIndex){
-//     const pivot = arr[endIndex].pieceNum;
-//     let j = startIndex - 1;
-    
-//     for (let i = 0; i < endIndex; i++) {
-//       if(arr[i].pieceNum < pivot){
-//         j += 1;
-//         const temp = arr[i];
-//         arr[i] = arr[j];
-//         arr[j] = temp 
-//       }
-//     }
+const quickSort = (pieces: Piece[], startIndex: number, endIndex: number) => {
+  if(startIndex >= endIndex) return;
 
+  function partition(arr: Piece[], start: number, end: number){
+    const pivot = end;
+    let j = 0;
 
+    for (let i = 0; i < arr.length - 1; i++) {
+      if(arr[i].pieceNum < arr[pivot].pieceNum){
+        swap(arr, i, j);
+        postMessage([arr[i], arr[j]]);
+        j++;
+      }
+    }
 
-//     return j + 1;
-//   }
+    swap(arr, pivot, j);
+    postMessage([arr[pivot], arr[j]]);
+    return j;
+  }
 
-// }
+  const pivotIndex = partition(pieces, startIndex, endIndex);
+
+  quickSort(pieces, startIndex, pivotIndex - 1);
+  quickSort(pieces, pivotIndex + 1, endIndex);
+}
 
 interface algoObject {
   [key: string] : any
@@ -108,10 +102,10 @@ self.onmessage = (e) => {
 
   const algorithms: algoObject = {
     // 'selection': () => selectionSort(pieces),
-    'brute': () => naiveSort(pieces),
-    'insertion': () => insertionSort(pieces),
-    'bubble': () => bubbleSort(pieces),
-    // 'quick': () => quickSort(pieces, 0, pieces.length)
+    'brute force': () => naiveSort(pieces),
+    'insertion sort': () => insertionSort(pieces),
+    'bubble sort': () => bubbleSort(pieces),
+    'quick sort': () => quickSort(pieces, 0, pieces.length - 1)
   }
 
   if(algorithms[complexity] === undefined) {
