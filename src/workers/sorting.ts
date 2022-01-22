@@ -66,6 +66,44 @@ const insertionSort = (pieces: Piece[]) => {
   }
 }
 
+const mergeSort = (pieces: Piece[]) => {
+
+  function mergeSortedArrays(arrayA: Piece[], arrayB: Piece[]){
+    const mergedArray = [];
+    let i = 0;
+    let j = 0
+
+    while(i < arrayA.length && j < arrayB.length){
+      if(arrayA[i] < arrayB[j]){
+        mergedArray.push(arrayA[i]);
+        i++;
+      } else {
+        mergedArray.push(arrayB[j]);
+        j++;
+      }
+    }
+
+    while(i < arrayA.length){
+      mergedArray.push(arrayA[i]);
+      i++;
+    }
+
+    while(j < arrayB.length){
+      mergedArray.push(arrayB[j])
+      j++;
+    }
+
+    return mergedArray;
+  }
+
+  if(pieces.length <= 1) return pieces;
+
+  const midpoint = Math.floor(pieces.length / 2);
+  const left: Piece[] = mergeSort(pieces.slice(0, midpoint));
+  const right: Piece[] = mergeSort(pieces.slice(midpoint));
+  return mergeSortedArrays(left, right)
+}
+
 const quickSort = (pieces: Piece[], startIndex: number, endIndex: number) => {
   if(startIndex >= endIndex) return;
 
