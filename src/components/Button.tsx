@@ -5,13 +5,21 @@ interface ButtonProp {
   children: React.ReactNode
   handleClick: React.MouseEventHandler
   type: 'button' | 'submit'
+  disabled: boolean
 }
 
 const { button } = styles
 
-export const Button = ({ type, children, handleClick }: ButtonProp) => {
+export const Button = ({ disabled, type, children, handleClick }: ButtonProp) => {
   return (
-    <button className={button} type={type === 'button' ? 'button' : 'submit'} onClick={handleClick}>
+    <button
+      disabled={disabled}
+      aria-disabled={disabled}
+      className={button}
+      // eslint-disable-next-line react/button-has-type
+      type={type}
+      onClick={handleClick}
+    >
       {children}
     </button>
   )
