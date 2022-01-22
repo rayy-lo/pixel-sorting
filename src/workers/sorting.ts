@@ -140,7 +140,7 @@ self.onmessage = (e) => {
 
   const algorithms: algoObject = {
     // 'selection': () => selectionSort(pieces),
-    'brute force': () => naiveSort(pieces),
+    // 'brute force': () => naiveSort(pieces),
     'insertion sort': () => insertionSort(pieces),
     'bubble sort': () => bubbleSort(pieces),
     'quick sort': () => quickSort(pieces, 0, pieces.length - 1)
