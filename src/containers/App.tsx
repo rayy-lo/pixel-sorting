@@ -10,8 +10,8 @@ const App = () => {
     /**
      * Number of rows and columns
      */
-    squares: 5,
-    sortingMethod: 'brute force',
+    squares: 10,
+    sortingMethod: 'bubble sort',
     height: 600,
     width: 600,
   })
@@ -26,6 +26,10 @@ const App = () => {
       ...canvasConfig,
       [event.target.name]: Number(value) ? Number(value) : value,
     })
+  }
+
+  const stopSort = () => {
+    worker.terminate()
   }
 
   const startSort = () => {
@@ -70,7 +74,7 @@ const App = () => {
 
   return (
     <div className="App">
-      <Header startSort={startSort} handleChange={handleChange} />
+      <Header stopSort={stopSort} startSort={startSort} handleChange={handleChange} />
       <MemoCanvas height={canvasConfig.height} width={canvasConfig.width} ref={canvasRef} />
     </div>
   )
