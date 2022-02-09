@@ -1,57 +1,63 @@
 import { ChangeEventHandler, useState } from 'react'
-import { Button } from './Button'
 import { Select } from './Select'
 import { squareOptions, algoOptions } from '../utils/constants'
 import styles from '../styles/modules/Header.module.css'
 
 interface HeaderProp {
-    handleChange: ChangeEventHandler
+    onConfigChange: ChangeEventHandler
     startSort: () => void
     stopSort: () => void
 }
 
-const { header, buttonWrapper } = styles
+const { header, buttonWrapper, button } = styles
 
-const Header = ({ startSort, stopSort, handleChange }: HeaderProp) => {
+const Header = ({ startSort, stopSort, onConfigChange }: HeaderProp) => {
     const [isSorting, setIsSorting] = useState(false)
+
+    const handleStopClick = () => {
+        stopSort()
+        setIsSorting(false)
+    }
+    const handleStartClick = () => {
+        startSort()
+        setIsSorting(true)
+    }
 
     return (
         <div className={header}>
             <Select
                 labelText="Sorting Method"
                 htmlFor="sortingMethod"
-                handleChange={handleChange}
+                onConfigChange={onConfigChange}
                 options={algoOptions}
                 disabled={isSorting}
             />
             <Select
                 labelText="Columns & Rows"
                 htmlFor="squares"
-                handleChange={handleChange}
+                onConfigChange={onConfigChange}
                 options={squareOptions}
                 disabled={isSorting}
             />
             <div className={buttonWrapper}>
-                <Button
-                    type="button"
+                <button
                     disabled={isSorting}
-                    handleClick={() => {
-                        startSort()
-                        setIsSorting(true)
-                    }}
+                    aria-disabled={isSorting}
+                    className={button}
+                    type="button"
+                    onClick={handleStartClick}
                 >
                     Start
-                </Button>
-                <Button
+                </button>
+                <button
                     disabled={!isSorting}
+                    aria-disabled={!isSorting}
+                    className={button}
                     type="button"
-                    handleClick={() => {
-                        stopSort()
-                        setIsSorting(false)
-                    }}
+                    onClick={handleStopClick}
                 >
                     Stop
-                </Button>
+                </button>
             </div>
         </div>
     )
