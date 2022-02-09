@@ -3,7 +3,7 @@ import { useState, ChangeEvent } from 'react'
 import Header from '../components/Header'
 import { MemoCanvas } from '../components/Canvas'
 import { CanvasConfig } from '../types'
-import { useCanvas } from '../utils/useCanvas'
+import { useCanvas } from '../hooks/useCanvas'
 
 const App = () => {
     const [canvasConfig, setCanvasConfig] = useState<CanvasConfig>({
@@ -20,7 +20,7 @@ const App = () => {
 
     const worker = new Worker(new URL('../workers/sorting.ts', import.meta.url))
 
-    const handleChange = (event: ChangeEvent<HTMLSelectElement>) => {
+    const onConfigChange = (event: ChangeEvent<HTMLSelectElement>) => {
         const { value } = event.target
         setCanvasConfig({
             ...canvasConfig,
@@ -74,7 +74,7 @@ const App = () => {
 
     return (
         <div className="App">
-            <Header stopSort={stopSort} startSort={startSort} handleChange={handleChange} />
+            <Header stopSort={stopSort} startSort={startSort} onConfigChange={onConfigChange} />
             <MemoCanvas height={canvasConfig.height} width={canvasConfig.width} ref={canvasRef} />
         </div>
     )
