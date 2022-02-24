@@ -1,8 +1,8 @@
 import { forwardRef, memo } from 'react'
-import { canvasWidth, canvasHeight } from '../utils/constants'
-import styles from '../styles/modules/Canvas.module.css'
+import { canvasWidth, canvasHeight } from '../../utils/constants'
+import styles from './Canvas.module.css'
 
-const Canvas = forwardRef<HTMLCanvasElement>((ref) => {
+const Canvas = forwardRef<HTMLCanvasElement>((props, ref) => {
     const { container, canvas } = styles
 
     return (
