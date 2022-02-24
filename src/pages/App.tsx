@@ -1,10 +1,10 @@
 import { useState, ChangeEvent } from 'react'
 
 import Header from '../components/Header'
-import { MemoCanvas } from '../components/Canvas'
+import { MemoCanvas } from '../components/Canvas/Canvas'
 import { CanvasConfig } from '../types'
 import { useCanvas } from '../hooks/useCanvas'
-import AnswerPanel from '../components/AnswerPanel'
+import AnswerPanel from '../components/AnswerPanel/AnswerPanel'
 import { canvasHeight, canvasWidth } from '../utils/constants'
 
 const App = () => {
