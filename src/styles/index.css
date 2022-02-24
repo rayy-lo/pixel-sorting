@@ -1,41 +1,41 @@
 @import-normalize;
 
 :root {
-  /* Colors */
-  --clr-primary: seashell;
-  --clr-primary-ltr: #fffaf6;
+    /* Colors */
+    --clr-primary: seashell;
+    --clr-primary-ltr: #fffaf6;
 
-  --clr-disabled: #c5c5c5;
-  --clr-btn: #952929;
-  --clr-btn-hover: #691414;
+    --clr-disabled: #c5c5c5;
+    --clr-btn: #952929;
+    --clr-btn-hover: #691414;
 
-  --clr-ntrl-dark: #505050;
-  --clr-ntrl-darker: #222222;
-  --clr-ntrl: #e9e9e9;
-  --clr-ntrl-light: #f9f9f9;
+    --clr-ntrl-dark: #505050;
+    --clr-ntrl-darker: #222222;
+    --clr-ntrl: #e9e9e9;
+    --clr-ntrl-light: #f9f9f9;
 
-  /* Fonts */
-  --font-family-header: 'AdobeClean-Bold';
-  --font-family-body: 'AdobeClean-Regular';
+    /* Fonts */
+    --font-family-header: 'AdobeClean-Bold';
+    --font-family-body: 'AdobeClean-Regular';
 }
 
 @font-face {
-  font-family: 'AdobeClean-Black';
-  src: url(../assets/fonts/AdobeClean-Black.otf);
+    font-family: 'AdobeClean-Black';
+    src: url(../assets/fonts/AdobeClean-Black.otf);
 }
 
 @font-face {
-  font-family: 'AdobeClean-Bold';
-  src: url(../assets/fonts/AdobeClean-Bold.otf);
+    font-family: 'AdobeClean-Bold';
+    src: url(../assets/fonts/AdobeClean-Bold.otf);
 }
 
 @font-face {
-  font-family: 'AdobeClean-Regular';
-  src: url(../assets/fonts/AdobeClean-Regular.otf);
+    font-family: 'AdobeClean-Regular';
+    src: url(../assets/fonts/AdobeClean-Regular.otf);
 }
 
 * {
-  font-family: var(--font-family-body);
+    font-family: var(--font-family-body);
 }
 
 h1,
@@ -44,17 +44,22 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: var(--font-family-header);
+    font-family: var(--font-family-header);
 }
 
 body {
-  margin: 0;
-  font-family: 'AdobeClean-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
-    'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: 'AdobeClean-Regular', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto',
+        'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
+}
+
+.App {
+    display: flex;
+    padding: 3rem;
 }

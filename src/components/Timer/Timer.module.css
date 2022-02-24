@@ -1,0 +1,8 @@
+.container {
+    font-size: 4rem;
+    text-align: center;
+}
+
+.container span {
+    font-weight: bold;
+}
