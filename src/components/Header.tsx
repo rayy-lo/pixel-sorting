@@ -26,14 +26,7 @@ const Header = ({ startSort, stopSort, onConfigChange }: HeaderProp) => {
     return (
         <div className={header}>
             <Select
-                labelText="Sorting Method"
-                htmlFor="sortingMethod"
-                onConfigChange={onConfigChange}
-                options={algoOptions}
-                disabled={isSorting}
-            />
-            <Select
-                labelText="Columns & Rows"
+                labelText="Difficulty"
                 htmlFor="squares"
                 onConfigChange={onConfigChange}
                 options={squareOptions}

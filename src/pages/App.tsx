@@ -4,16 +4,13 @@ import Header from '../components/Header'
 import { MemoCanvas } from '../components/Canvas'
 import { CanvasConfig } from '../types'
 import { useCanvas } from '../hooks/useCanvas'
+import AnswerPanel from '../components/AnswerPanel'
+import { canvasHeight, canvasWidth } from '../utils/constants'
 
 const App = () => {
     const [canvasConfig, setCanvasConfig] = useState<CanvasConfig>({
-        /**
-         * Number of rows and columns
-         */
         squares: 10,
         sortingMethod: 'bubble sort',
-        height: 600,
-        width: 600,
     })
 
     const [canvasRef, pieces] = useCanvas(canvasConfig.squares)
@@ -33,8 +30,8 @@ const App = () => {
     }
 
     const startSort = () => {
-        const pieceWidth = canvasConfig.width / canvasConfig.squares
-        const pieceHeight = canvasConfig.height / canvasConfig.squares
+        const pieceWidth = canvasWidth / canvasConfig.squares
+        const pieceHeight = canvasHeight / canvasConfig.squares
         const ctx = canvasRef.current?.getContext('2d')
 
         worker.postMessage([canvasConfig.sortingMethod, pieces])
@@ -42,7 +39,7 @@ const App = () => {
             const firstPiece = e.data[0]
             const secondPiece = e.data[1]
 
-            const offscreen = new OffscreenCanvas(canvasConfig.width, canvasConfig.height)
+            const offscreen = new OffscreenCanvas(canvasWidth, canvasHeight)
             const offCtx = offscreen.getContext('2d')
             offCtx?.drawImage(canvasRef.current as HTMLCanvasElement, 0, 0)
 
@@ -74,8 +71,8 @@ const App = () => {
 
     return (
         <div className="App">
-            <Header stopSort={stopSort} startSort={startSort} onConfigChange={onConfigChange} />
-            <MemoCanvas height={canvasConfig.height} width={canvasConfig.width} ref={canvasRef} />
+            <MemoCanvas ref={canvasRef} />
+            <AnswerPanel />
         </div>
     )
 }
