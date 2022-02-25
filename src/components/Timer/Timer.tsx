@@ -1,19 +1,18 @@
+import { useEffect, useState } from 'react'
+import { useTimer } from '../../hooks/useTimer'
 import styles from './Timer.module.css'
 
 interface TimerProps {
-    time: Date
+    gameStarted: boolean
 }
 
-const Timer = ({ time }: TimerProps) => {
+const Timer = ({ gameStarted }: TimerProps) => {
     const { container } = styles
-
-    const minutes = 0
-    const seconds = 0
-    const milliseconds = 0
+    const { minutes, seconds } = useTimer(gameStarted)
 
     return (
         <div className={container}>
-            <span>00</span>:<span>00</span>:<span>00</span>
+            <span>{minutes}</span>:<span>{seconds}</span>
         </div>
     )
 }

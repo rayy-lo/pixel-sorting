@@ -62,4 +62,5 @@ code {
 .App {
     display: flex;
     padding: 3rem;
+    justify-content: center;
 }

@@ -6,16 +6,15 @@ const AnswerPanel = () => {
     const { container, button } = styles
 
     const [gameStarted, setGameStarted] = useState(false)
-    const [timeElapsed, setTimeElapsed] = useState(null)
 
     const handleStart = () => {
-        console.log('start game and timer')
+        setGameStarted(true)
     }
 
     return (
         <div className={container}>
             {/* <h2>What Is This?</h2> */}
-            <Timer time={new Date()} />
+            <Timer gameStarted={gameStarted} />
             <button
                 disabled={gameStarted}
                 aria-disabled={gameStarted}
