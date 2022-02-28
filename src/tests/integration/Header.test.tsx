@@ -4,16 +4,8 @@ import Header from '../../components/Header'
 
 const renderComponent = () => {
     const onConfigChangeMock = jest.fn()
-    const startSortMock = jest.fn()
-    const stopSortMock = jest.fn()
 
-    return render(
-        <Header
-            stopSort={stopSortMock}
-            startSort={startSortMock}
-            onConfigChange={onConfigChangeMock}
-        />
-    )
+    return render(<Header onConfigChange={onConfigChangeMock} />)
 }
 
 describe('<Header/>', () => {

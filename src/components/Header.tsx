@@ -1,28 +1,15 @@
-import { ChangeEventHandler, useState } from 'react'
+import { ChangeEventHandler } from 'react'
 import { Select } from './Select'
-import { squareOptions, algoOptions } from '../utils/constants'
+import { squareOptions } from '../utils/constants'
 import styles from '../styles/modules/Header.module.css'
 
 interface HeaderProp {
     onConfigChange: ChangeEventHandler
-    startSort: () => void
-    stopSort: () => void
 }
 
 const { header, buttonWrapper, button } = styles
 
-const Header = ({ startSort, stopSort, onConfigChange }: HeaderProp) => {
-    const [isSorting, setIsSorting] = useState(false)
-
-    const handleStopClick = () => {
-        stopSort()
-        setIsSorting(false)
-    }
-    const handleStartClick = () => {
-        startSort()
-        setIsSorting(true)
-    }
-
+const Header = ({ onConfigChange }: HeaderProp) => {
     return (
         <div className={header}>
             <Select
@@ -30,28 +17,8 @@ const Header = ({ startSort, stopSort, onConfigChange }: HeaderProp) => {
                 htmlFor="squares"
                 onConfigChange={onConfigChange}
                 options={squareOptions}
-                disabled={isSorting}
+                disabled={false}
             />
-            <div className={buttonWrapper}>
-                <button
-                    disabled={isSorting}
-                    aria-disabled={isSorting}
-                    className={button}
-                    type="button"
-                    onClick={handleStartClick}
-                >
-                    Start
-                </button>
-                <button
-                    disabled={!isSorting}
-                    aria-disabled={!isSorting}
-                    className={button}
-                    type="button"
-                    onClick={handleStopClick}
-                >
-                    Stop
-                </button>
-            </div>
         </div>
     )
 }
