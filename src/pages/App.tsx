@@ -25,9 +25,7 @@ const App = () => {
         })
     }
 
-    const stopSort = () => {
-        worker.terminate()
-    }
+    const stopSort = () => worker.terminate()
 
     const startSort = () => {
         const pieceWidth = canvasWidth / canvasConfig.squares
@@ -71,6 +69,7 @@ const App = () => {
 
     return (
         <div className="App">
+            <Header onConfigChange={onConfigChange} />
             <MemoCanvas ref={canvasRef} />
             <AnswerPanel />
         </div>

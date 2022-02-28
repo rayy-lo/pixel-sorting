@@ -1,26 +1,27 @@
 import { useState } from 'react'
+import { useTimer } from '../../hooks/useTimer'
 import Timer from '../Timer/Timer'
+
 import styles from './AnswerPanel.module.css'
 
 const AnswerPanel = () => {
+    const [start, setStart] = useState<Date | null>(null)
     const { container, button } = styles
+    const { minutes, seconds } = useTimer(start)
 
-    const [gameStarted, setGameStarted] = useState(false)
-
-    const handleStart = () => {
-        setGameStarted(true)
+    const onStartGame = () => {
+        setStart(new Date())
     }
 
     return (
         <div className={container}>
-            {/* <h2>What Is This?</h2> */}
-            <Timer gameStarted={gameStarted} />
+            <Timer minutes={minutes} seconds={seconds} />
             <button
-                disabled={gameStarted}
-                aria-disabled={gameStarted}
+                disabled={!!start}
+                aria-disabled={!!start}
                 className={button}
                 type="button"
-                onClick={handleStart}
+                onClick={onStartGame}
             >
                 Start
             </button>

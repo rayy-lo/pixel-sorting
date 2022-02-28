@@ -1,14 +1,12 @@
-import { useEffect, useState } from 'react'
-import { useTimer } from '../../hooks/useTimer'
 import styles from './Timer.module.css'
 
 interface TimerProps {
-    gameStarted: boolean
+    minutes: string
+    seconds: string
 }
 
-const Timer = ({ gameStarted }: TimerProps) => {
+const Timer = ({ minutes, seconds }: TimerProps) => {
     const { container } = styles
-    const { minutes, seconds } = useTimer(gameStarted)
 
     return (
         <div className={container}>
