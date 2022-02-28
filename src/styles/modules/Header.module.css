@@ -4,6 +4,7 @@
     justify-content: space-evenly;
     border-bottom: 1px solid var(--clr-ntrl);
     background: var(--clr-primary);
+    grid-area: header;
 }
 
 .buttonWrapper {
