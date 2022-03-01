@@ -1,0 +1,24 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.label {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  color: var(--clr-ntrl-dark);
+}
+
+select {
+  font-size: 1rem;
+  padding: 8px 10px;
+  border-radius: 5px;
+  text-transform: capitalize;
+  background: url('../../assets/icons/down-arrow.png') no-repeat 95% white;
+  background-size: 15px;
+  -moz-appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
