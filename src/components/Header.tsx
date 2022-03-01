@@ -1,5 +1,5 @@
 import { ChangeEventHandler } from 'react'
-import { Select } from './Select'
+import { Select } from './Select/Select'
 import { squareOptions } from '../utils/constants'
 import styles from '../styles/modules/Header.module.css'
 

@@ -5,12 +5,12 @@ import Timer from '../Timer/Timer'
 import styles from './AnswerPanel.module.css'
 
 const AnswerPanel = () => {
-    const [start, setStart] = useState<Date | null>(null)
     const { container, button } = styles
+    const [start, setNow] = useState<Date | null>(null)
     const { minutes, seconds } = useTimer(start)
 
     const onStartGame = () => {
-        setStart(new Date())
+        setNow(new Date())
     }
 
     return (
