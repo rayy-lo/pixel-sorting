@@ -60,12 +60,7 @@ code {
 }
 
 .App {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-areas:
-        'header header header'
-        'canvas canvas panel';
-    column-gap: 1rem;
-    row-gap: 2rem;
+    display: flex;
+    padding: 3rem;
     justify-content: center;
 }
