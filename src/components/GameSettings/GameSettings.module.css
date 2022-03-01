@@ -1,0 +1,12 @@
+.settingsBtn {
+    background: transparent;
+    border: none;
+    position: absolute;
+    right: 3%;
+    bottom: 3%;
+}
+
+.settingsBtn img {
+    height: 3rem;
+    width: 3rem;
+}
