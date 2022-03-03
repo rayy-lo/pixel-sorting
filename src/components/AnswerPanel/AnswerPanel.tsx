@@ -4,12 +4,17 @@ import Timer from '../Timer/Timer'
 
 import styles from './AnswerPanel.module.css'
 
-const AnswerPanel = () => {
+interface AnswerPanelProp {
+    startSort: () => void
+}
+
+const AnswerPanel = ({ startSort }: AnswerPanelProp) => {
     const { container, button } = styles
     const [start, setNow] = useState<Date | null>(null)
     const { minutes, seconds } = useTimer(start)
 
     const onStartGame = () => {
+        startSort()
         setNow(new Date())
     }
 

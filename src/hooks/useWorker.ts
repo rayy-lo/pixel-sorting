@@ -1,16 +1,20 @@
+import React from 'react'
 import { canvasHeight, canvasWidth } from '../utils/constants'
+import { CanvasConfig, Piece } from '../types'
 
-export const useWorker = (canvasConfig, canvasRef, pieces) => {
+export const useWorker = (canvasConfig: CanvasConfig, canvasRef: React.RefObject<HTMLCanvasElement>, pieces: Piece[]) => {
     
-    const worker = new Worker(new URL('../workers/sorting.ts', import.meta.url))
-    const stopSort = () => worker.terminate()
+    const sortWorker = new Worker(new URL('../workers/sorting.ts', import.meta.url))
+    const paintWorker = new Worker()
+    
+    const stopSort = () => sortWorker.terminate()
     const startSort = () => {
         const pieceWidth = canvasWidth / canvasConfig.squares
         const pieceHeight = canvasHeight / canvasConfig.squares
         const ctx = canvasRef.current?.getContext('2d')
 
-        worker.postMessage([canvasConfig.sortingMethod, pieces])
-        worker.onmessage = (e) => {
+        sortWorker.postMessage([canvasConfig.sortingMethod, pieces])
+        sortWorker.onmessage = (e) => {
             const firstPiece = e.data[0]
             const secondPiece = e.data[1]
 
